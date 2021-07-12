@@ -15,6 +15,7 @@ const Container = styled.div`
     width: 100%;
     justify-content: center;
     align-items: center;
+    margin-top: 1rem;
   }
 `;
 
@@ -46,12 +47,12 @@ export default function Home() {
 
   useEffect(() => {
     fetchData();
-    return () => {};
+    return () => { };
   }, [url]);
 
   useEffect(() => {
     fetchPokemon();
-    return () => {};
+    return () => { };
   }, [data]);
 
   const fetchData = async () => {
@@ -103,11 +104,12 @@ export default function Home() {
       <Header />
 
       <Container>
-      <div className="pagination">
-        {data.previous && <Button onClick={previousPage}>Previous</Button>}
-        {data.next && <Button onClick={nextPage}>Next</Button>}
-      </div>
+
         <PokemonList>{!loading && pokemons.map(renderCards)}</PokemonList>
+        <div className="pagination">
+          {data.previous && <Button onClick={previousPage}>Previous</Button>}
+          {data.next && <Button onClick={nextPage}>Next</Button>}
+        </div>
       </Container>
     </>
   );
